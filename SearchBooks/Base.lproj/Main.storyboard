@@ -1,24 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tyJ-Zq-g7L">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search Books-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchBookViewController" customModule="SearchBooks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUy-n3-CIJ">
+                                <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Books" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="60T-7G-cZ7">
+                                        <rect key="frame" x="8" y="5" width="240" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bry-Jy-jBm">
+                                        <rect key="frame" x="256" y="7" width="56" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WtF-4v-s8W">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Search"/>
+                                                <connections>
+                                                    <action selector="searchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a8u-Q8-QZC"/>
+                                                </connections>
+                                            </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Hgg-BG-i4g">
+                                                <rect key="frame" x="18" y="5" width="20" height="20"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="WtF-4v-s8W" secondAttribute="trailing" id="6X6-QX-3uN"/>
+                                            <constraint firstItem="Hgg-BG-i4g" firstAttribute="centerX" secondItem="bry-Jy-jBm" secondAttribute="centerX" id="G9u-MK-cwT"/>
+                                            <constraint firstItem="WtF-4v-s8W" firstAttribute="top" secondItem="bry-Jy-jBm" secondAttribute="top" id="SFS-7e-rro"/>
+                                            <constraint firstItem="WtF-4v-s8W" firstAttribute="leading" secondItem="bry-Jy-jBm" secondAttribute="leading" id="X0C-6h-IiN"/>
+                                            <constraint firstAttribute="width" constant="56" id="d0b-Gx-WrW"/>
+                                            <constraint firstAttribute="bottom" secondItem="WtF-4v-s8W" secondAttribute="bottom" id="l2p-rc-OEQ"/>
+                                            <constraint firstItem="Hgg-BG-i4g" firstAttribute="centerY" secondItem="bry-Jy-jBm" secondAttribute="centerY" id="wEn-KK-oPJ"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="60T-7G-cZ7" firstAttribute="leading" secondItem="nUy-n3-CIJ" secondAttribute="leading" constant="8" id="Dre-2U-i5A"/>
+                                    <constraint firstItem="bry-Jy-jBm" firstAttribute="leading" secondItem="60T-7G-cZ7" secondAttribute="trailing" constant="8" id="H8c-Dv-ym1"/>
+                                    <constraint firstAttribute="height" constant="44" id="SQ9-Vn-g0r"/>
+                                    <constraint firstItem="60T-7G-cZ7" firstAttribute="centerY" secondItem="nUy-n3-CIJ" secondAttribute="centerY" id="Sqa-I8-vDt"/>
+                                    <constraint firstAttribute="trailing" secondItem="bry-Jy-jBm" secondAttribute="trailing" constant="8" id="VZM-02-n92"/>
+                                    <constraint firstItem="bry-Jy-jBm" firstAttribute="centerY" secondItem="nUy-n3-CIJ" secondAttribute="centerY" id="rCr-iT-nUl"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lXX-Ig-Zso">
+                                <rect key="frame" x="0.0" y="88" width="320" height="480"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lXX-Ig-Zso" secondAttribute="trailing" id="0qv-jb-WcC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lXX-Ig-Zso" secondAttribute="bottom" id="3mX-pz-cfl"/>
+                            <constraint firstAttribute="trailing" secondItem="nUy-n3-CIJ" secondAttribute="trailing" id="8ZT-K2-suy"/>
+                            <constraint firstItem="lXX-Ig-Zso" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DAw-9j-HrE"/>
+                            <constraint firstItem="lXX-Ig-Zso" firstAttribute="top" secondItem="nUy-n3-CIJ" secondAttribute="bottom" id="OO4-f9-HSN"/>
+                            <constraint firstItem="nUy-n3-CIJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ngC-4O-oqA"/>
+                            <constraint firstItem="nUy-n3-CIJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="p5z-c7-ii4"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Search Books" id="QWO-5t-LLS"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="booksTableView" destination="lXX-Ig-Zso" id="WJd-y5-dKy"/>
+                        <outlet property="searchButton" destination="WtF-4v-s8W" id="k0Y-9X-zfz"/>
+                        <outlet property="searchField" destination="60T-7G-cZ7" id="ZIj-JV-se6"/>
+                        <outlet property="searchIndicator" destination="Hgg-BG-i4g" id="ap6-F9-5PF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="711" y="82"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="81I-Iw-3SF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tyJ-Zq-g7L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="g4U-Hq-nCG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="grq-dk-p6u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZZ-m3-4Bt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.75" y="82.394366197183103"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
