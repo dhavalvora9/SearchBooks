@@ -30,7 +30,7 @@ class BookService: BookServiceProtocol {
                         let transformed = decodeed.docs.enumerated().compactMap { $0.offset < 10 ? $0.element : nil }
                         completion(true, transformed, nil)
                     } catch {
-                        completion(false, nil, "Unable to parse data.")
+                        completion(false, nil, "Sorry. It's not you. It's us.")
                     }
                 case .failure(let error):
                     completion(false, nil, error.errorDescription)

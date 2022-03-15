@@ -56,8 +56,16 @@ class SearchBookViewController: UIViewController {
             searchButton.isHidden = true
             
             // Fetch data using webservice
-            viewModel.searchBooks(for: searchText) { [weak self] success, results, error in
-                // Handle error
+            viewModel.searchBooks(for: searchText) { [weak self] error in
+                if let error = error {
+                    self?.searchIndicator.stopAnimating()
+                    self?.searchButton.isHidden = false
+                    
+                    // Present alert controller
+                    let alert = UIAlertController(title: self?.viewModel.alertTitle, message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: self?.viewModel.actionTitle, style: .default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
+                }
             }
             
             // Reload TableView closure

@@ -14,6 +14,9 @@ class BookViewModel: NSObject {
     
     var book = [Doc]()
     
+    var alertTitle = "Something went wrong please try again later."
+    var actionTitle = "OK"
+    
     var bookCellViewModels = [BookCellViewModel]() {
         didSet {
             reloadTableView?()
@@ -24,13 +27,13 @@ class BookViewModel: NSObject {
         self.bookService = bookService
     }
     
-    func searchBooks(for query: String , completion: @escaping (_ success: Bool, _ results: [Doc]?, _ error: String?) -> ()) {
+    func searchBooks(for query: String , completion: @escaping (_ error: String?) -> ()) {
         bookService.searchBooks(for: query) { success, results, error in
             if success, let books = results {
                 self.fetchData(docs: books)
-                completion(success, results, error)
+                completion(error)
             } else {
-                completion(success, results, error)
+                completion(error)
             }
         }
     }
